@@ -4,6 +4,8 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import {ErrorMiddleware} from "./middleware/error"; 
+import userRouter from "./routes/user.route";
+
 
 export const app = express();
 
@@ -16,7 +18,9 @@ app.use(
 );
 
 //routes
+app.use("/api/v1",userRouter)
 
+//testing api 
 app.get("/test", (req, res, next) => {
   res.status(200).json({
     success: true,
